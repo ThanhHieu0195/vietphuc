@@ -10,5 +10,6 @@
     <orderEntry type="module" module-name="lema-maketplace-instructor" />
     <orderEntry type="module" module-name="education" />
     <orderEntry type="module" module-name="wordpress" />
+    <orderEntry type="module" module-name="solazu-core" />
   </component>
 </module>

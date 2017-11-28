@@ -2,10 +2,12 @@
 namespace includes\interfaces;
 
 abstract class MenuInterface {
-    static $list_menu = array();
+	static $list_menu = array();
 
     private $configs;
     private $attributes;
+    private $prefix = 'prefix_menu';
+
     public static function className()
     {
         return get_called_class();
@@ -17,8 +19,8 @@ abstract class MenuInterface {
             return $this->configs[$name];
         }
 
-        if ( key_exists($name, $this->attributes) ) {
-            return $this->attributes[$name];
+        if ( $this->checkAtrribute($name) ) {
+            return $this->getAttribute($name);
         }
 
         return null;
@@ -58,5 +60,22 @@ abstract class MenuInterface {
 	public function callBackFunc() {
         return '';
     }
+
+	public function saveAttribute($name, $value) {
+    	if ( $this->checkAtrribute($name) ) {
+		    update_option($this->prefix . $name, $value);
+	    }
+	}
+
+	public function getAttribute($name) {
+		return get_option($this->prefix . $name, null);
+	}
+
+	public function checkAtrribute($name) {
+		if ( key_exists($name, $this->attributes) ) {
+			return true;
+		}
+		return false;
+	}
 
 }
