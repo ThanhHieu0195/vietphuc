@@ -14,6 +14,7 @@ class Hook implements HookInterface{
 		add_action('add_meta_boxes', [$this, 'addOtherOption']);
 		add_action('wp_ajax_admin_ajax', [$this, 'excuteAjax']);
 		add_action('init', [$this, 'registerPostType']);
+		add_action('admin_menu', [$this, 'registerMenu']);
 	}
 
 	public function registerFilter() {
@@ -111,5 +112,9 @@ class Hook implements HookInterface{
     public function registerPostType() {
 	    \includes\classes\ProjectPostType::getInstance();
 	    \includes\classes\ProjectCategory::getInstance();
+    }
+
+    public function registerMenu() {
+	    \includes\classes\ConfigMenu::getInstance();
     }
 }
