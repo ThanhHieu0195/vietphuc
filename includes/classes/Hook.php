@@ -115,6 +115,7 @@ class Hook implements HookInterface{
     }
 
     public function registerMenu() {
-	    \includes\classes\ConfigMenu::getInstance();
+	    $configs = \includes\classes\ConfigMenu::getInstance();
+        $configs->registerMenu();
     }
 }

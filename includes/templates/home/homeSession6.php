@@ -1,6 +1,3 @@
-<?php
-$contact = get_field('site6_contact', $post_id);
-?>
 <div class="pp-scrollable section section-6">
 	<div class="scroll-wrap">
 		<div class="scrollable-content">
@@ -15,7 +12,8 @@ $contact = get_field('site6_contact', $post_id);
 										<h2 class="text-red"><?php echo esc_html__('Liên hệ với chúng tôi', 'dm') ?></h2>
 										<div id="map" class="map-2"></div>
                                         <?php
-                                        echo \includes\Bootstrap::bootstrap()->helper->minifyHtml($contact);
+                                        $template = \includes\Bootstrap::bootstrap()->helper->getPathTemplate('home/contact');
+                                        echo \includes\Bootstrap::bootstrap()->helper->render($template);
                                         ?>
 									</div>
 								</div>

@@ -1,5 +1,6 @@
 <?php
 namespace includes;
+use includes\classes\ConfigMenu;
 use includes\classes\Helper;
 use includes\classes\Hook;
 
@@ -20,6 +21,7 @@ include 'classes/ConfigMenu.php';
 /**
  * @property Helper $helper
  * @property Hook $hook
+ * @property ConfigMenu $configs
  */
 class Bootstrap implements interfaces\ManagementInterface {
 	/**
@@ -28,12 +30,14 @@ class Bootstrap implements interfaces\ManagementInterface {
 	static $bootstrap;
 	public $helper;
 	public $hook;
+	public $configs;
 
 	public static function init() {
 		if ( empty(self::$bootstrap) ) {
 			self::$bootstrap = new Bootstrap();
 			self::$bootstrap->registerHook();
 			self::$bootstrap->registerHelper();
+			self::$bootstrap->configs = \includes\classes\ConfigMenu::getInstance();
 		}
 	}
 

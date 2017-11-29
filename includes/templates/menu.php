@@ -4,6 +4,12 @@ $checkOnePage = includes\Bootstrap::bootstrap()->helper->checkOnePage();
 if ( !$checkOnePage ) {
     $classMenu .= ' js-navbar affix-top';
 }
+
+$social_facebook = \includes\Bootstrap::bootstrap()->configs->getAttribute('facebook');
+$social_linkedin = \includes\Bootstrap::bootstrap()->configs->getAttribute('linkedin');
+$social_google_plus = \includes\Bootstrap::bootstrap()->configs->getAttribute('google-plus');
+$social_twitter = \includes\Bootstrap::bootstrap()->configs->getAttribute('twitter');
+$hotline = \includes\Bootstrap::bootstrap()->configs->getAttribute('hotline');
 ?>
 <div class="<?php echo esc_attr($classMenu) ?>" id="contenerDeco">
 	<div class="sidelong-menu">
@@ -34,11 +40,11 @@ if ( !$checkOnePage ) {
     <a class="brand" href="./">
         <img class="brand-img" alt="" src="<?php echo get_template_directory_uri() ?>/assets/images/logo.png">
     </a>
-    <address class="navbar-address visible-lg">Hotline: <span class="text-dark-gray">(028) 32 45 789</span></address>
+    <address class="navbar-address visible-lg">Hotline: <span class="text-dark-gray"><?php echo esc_html($hotline) ?></span></address>
     <div class="social-list hidden-xs">
-        <a href="" class="fa fa-facebook"></a>
-        <a href="" class="fa fa-google-plus"></a>
-        <a href="" class="fa fa-linkedin"></a>
-        <a href="" class="fa fa-twitter"></a>
+        <a href="<?php echo esc_url($social_facebook) ?>" class="fa fa-facebook"></a>
+        <a href="<?php echo esc_url($social_google_plus) ?>" class="fa fa-google-plus"></a>
+        <a href="<?php echo esc_url($social_linkedin) ?>" class="fa fa-linkedin"></a>
+        <a href="<?php echo esc_url($social_twitter) ?>" class="fa fa-twitter"></a>
     </div>
 </header>

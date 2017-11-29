@@ -33,7 +33,6 @@ abstract class MenuInterface {
             $menu_item = new $class();
             $menu_item->configs = $menu_item->getConfigs();
             $menu_item->attributes = $menu_item->getAttributes();
-            $menu_item->registerMenu();
             self::$list_menu[$class] = $menu_item;
         }
         return self::$list_menu[$class];
@@ -68,7 +67,7 @@ abstract class MenuInterface {
 	}
 
 	public function getAttribute($name) {
-		return get_option($this->prefix . $name, null);
+		return get_option($this->prefix . $name, '');
 	}
 
 	public function checkAtrribute($name) {
